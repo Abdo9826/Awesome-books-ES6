@@ -65,7 +65,7 @@ for (let i = 0; i < navList.length; i += 1) {
 }
 
 const { luxon } = window;
-  function displayDate() {
+function displayDate() {
   const Time = luxon.DateTime.now();
   const localTime = Time.toLocaleString(luxon.DateTime.DATETIME_MED);
   document.querySelector('.date-display').innerHTML = localTime;
