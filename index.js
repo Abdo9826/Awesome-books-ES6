@@ -1,5 +1,4 @@
 import Books from './Bookstore.js';
-import { DateTime } from './luxon.js';
 
 const title = document.querySelector('.title-input');
 const author = document.querySelector('.author-input');
@@ -65,5 +64,13 @@ for (let i = 0; i < navList.length; i += 1) {
   });
 }
 
-const datetimenow = DateTime.local();
-document.querySelector('.date-display').innerHTML = datetimenow;
+const { luxon } = window;
+  function displayDate() {
+  const Time = luxon.DateTime.now();
+  const localTime = Time.toLocaleString(luxon.DateTime.DATETIME_MED);
+  document.querySelector('.date-display').innerHTML = localTime;
+}
+
+displayDate();
+
+setInterval(displayDate, 1000);
