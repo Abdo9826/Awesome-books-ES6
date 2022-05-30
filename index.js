@@ -1,4 +1,5 @@
-import Books from './Books.js';
+import Books from './Bookstore.js';
+import { DateTime } from './luxon.js';
 
 const title = document.querySelector('.title-input');
 const author = document.querySelector('.author-input');
@@ -64,29 +65,5 @@ for (let i = 0; i < navList.length; i += 1) {
   });
 }
 
-function timecomp(timeData) {
-  if (timeData.length < 2) {
-    timeData = `0${timeData}`;
-  }
-  return timeData;
-}
-
-const dateDisplay = document.querySelector('.date-display');
-const datePara = document.createElement('p');
-function manageDate(datePara) {
-  const date = new Date();
-  const myDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
-  const dayOfWeek = date.getDay();
-  const dayOfMonth = date.getDate();
-  const year = date.getFullYear();
-  const hour = date.getHours();
-  let second = date.getSeconds();
-  let minutes = date.getMinutes();
-  const min = minutes.toString().split('').join('');
-  const sec = second.toString().split('').join('');
-  minutes = timecomp(min);
-  second = timecomp(sec);
-  datePara.textContent = `${myDay[dayOfWeek]} May ${dayOfMonth}, ${year} ${hour}:${minutes} ${second}`;
-  dateDisplay.appendChild(datePara);
-}
-setInterval(() => manageDate(datePara), 1000);
+const datetimenow = DateTime.local();
+document.querySelector('.date-display').innerHTML = datetimenow;
